@@ -17,7 +17,7 @@ from datetime import datetime
 def registrar_pedido(func):
     def wrapper(*args, **kwargs):
         ahora = datetime.now()
-        print(f"Fecha y hora de ejecución: {ahora.strftime('%H:%M:%S')}")
+        print(f"Fecha y hora de ejecucion: {ahora.strftime('%d/%m/%Y %H:%M:%S')}")
         resultado = func(*args, **kwargs)
         if resultado is not None:
             print("Pedido registrado correctamente")
@@ -33,7 +33,7 @@ def calcular_total(*args):
             or not isinstance(precio, (int, float))
             or not precio > 0
         ):
-            print(f"***Precio inválido: {precio}***")
+            print(f"***Precio invalido: {precio}***")
             return None
         total += precio
     return total

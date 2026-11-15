@@ -58,13 +58,17 @@ class VehiculoAlquiler(Vehiculo):
         else:
             descuento = 0.15
         total_final=importe_total*(1 - descuento)
+        print(f"Dias de alquiler: {dias_alquiler}")
+        print(f"Importe total antes del descuento: {importe_total:.2f}")
+        print(f"Descuento aplicado: {descuento*100:.0f}%")
+        print(f"Importe descontado: {importe_total*descuento:.2f}")
+        print(f"Total final con descuento: {total_final:.2f}")
+        print("*"*30)
         return importe_total, total_final
 
     def mostrar_datos(self):
         super().mostrar_datos()
         print(f"Codigo: {self.codigo} | Tarifa diaria: {self.__tarifa_diaria}")
-        print(f"Importe antes del descuento: {self.calcular_descuento(1)[0]:.2f}")
-        print(f"Total final con descuento: {self.calcular_descuento(1)[1]:.2f}")
 
     #validaciones
     def validar_tarifa_diaria(self, tarifa):
@@ -75,21 +79,23 @@ class VehiculoAlquiler(Vehiculo):
 
 vehiculo1 = VehiculoAlquiler("Toyota", "Corolla", 2022, "A001", 100)
 vehiculo2 = VehiculoAlquiler("Honda", "Civic", 2021, "B002", 120)
+
+vehiculo1.mostrar_datos()
+
 #aumentos
 vehiculo1.aumentar_tarifa(porcentaje=10)
 vehiculo1.aumentar_tarifa(porcentaje=10)
+print()
+vehiculo1.actualizar_tarifa(200) #actualizar tarifa negativa
 
 #descuentos
 vehiculo1.calcular_descuento(1)
 vehiculo1.calcular_descuento(3)
 vehiculo1.calcular_descuento(6)
+print("*"*30)
 
+vehiculo2.mostrar_datos()
 vehiculo2.calcular_descuento(1)
 vehiculo2.calcular_descuento(3)
 vehiculo2.calcular_descuento(6)
 
-vehiculo1.actualizar_tarifa(-100) #actualizar tarifa negativa
-
-vehiculo1.mostrar_datos()
-print("*"*30)
-vehiculo2.mostrar_datos()
